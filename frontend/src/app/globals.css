@@ -4,143 +4,170 @@
 
 @layer base {
   :root {
-    --bg-primary: #06070b;
-    --bg-card: rgba(13, 15, 23, 0.92);
-    --border-color: rgba(212, 175, 55, 0.28);
-    --accent-primary: #f59e0b;
-    --accent-secondary: #00f0ff;
-    --text-primary: #f8fafc;
-    --text-muted: #94a3b8;
+    --bg-primary: #07080c;
+    --bg-card: rgba(13, 16, 25, 0.95);
+    --border-color: rgba(212, 175, 55, 0.35);
+    --accent-gold: #d4af37;
+    --accent-amber: #f59e0b;
+    --accent-ruby: #e11d48;
+    --text-parchment: #f4ecd8;
+    --text-muted: #a3a8b8;
   }
 
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: #07080c;
+    color: #f4ecd8;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     min-height: 100vh;
     background-image: 
-      radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
-      radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
-      radial-gradient(circle at 90% 80%, rgba(244, 63, 94, 0.06) 0%, transparent 50%);
+      radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 10% 80%, rgba(225, 29, 72, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #07080c 0%, #0c0e16 50%, #050609 100%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, .font-title {
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.05em;
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Medieval Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(6, 7, 11, 0.9);
+  background: #07080c;
+  border-left: 1px solid rgba(212, 175, 55, 0.15);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 175, 55, 0.4);
-  border-radius: 4px;
+  background: linear-gradient(180deg, #d4af37 0%, #785a18 100%);
+  border-radius: 2px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 158, 11, 0.8);
+  background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
 }
 
-/* RPG FANTASY GAME CLIENT HUD ELEMENTS */
+/* ELDEN REALM CARVED BASALT & GOLD PANELS */
 .rpg-panel {
-  background: linear-gradient(180deg, rgba(20, 24, 38, 0.95) 0%, rgba(10, 12, 20, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(17, 21, 32, 0.96) 0%, rgba(10, 12, 18, 0.98) 100%);
   border: 1px solid rgba(212, 175, 55, 0.35);
   box-shadow: 
-    0 10px 30px -5px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 15px rgba(245, 158, 11, 0.06);
+    0 12px 35px -5px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 230, 150, 0.15),
+    inset 0 0 20px rgba(212, 175, 55, 0.05);
   position: relative;
 }
 
 .rpg-panel-boss {
-  background: linear-gradient(180deg, rgba(35, 15, 20, 0.95) 0%, rgba(15, 8, 10, 0.98) 100%);
-  border: 1px solid rgba(244, 63, 94, 0.4);
+  background: linear-gradient(180deg, rgba(38, 14, 20, 0.96) 0%, rgba(16, 7, 10, 0.98) 100%);
+  border: 1px solid rgba(225, 29, 72, 0.45);
   box-shadow: 
-    0 10px 30px -5px rgba(0, 0, 0, 0.8),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    inset 0 0 20px rgba(244, 63, 94, 0.12);
+    0 12px 35px -5px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 180, 180, 0.15),
+    inset 0 0 25px rgba(225, 29, 72, 0.15);
+}
+
+/* Carved Parchment & Scroll Texture */
+.parchment-scroll {
+  background: linear-gradient(180deg, #181c28 0%, #10131d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  position: relative;
+}
+.parchment-scroll::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
 }
 
 /* Ornate RPG Gold Filigree Border */
 .rpg-gold-border {
   border: 1px solid #d4af37;
   box-shadow: 
-    0 0 12px rgba(212, 175, 55, 0.25),
+    0 0 15px rgba(212, 175, 55, 0.3),
     inset 0 0 10px rgba(212, 175, 55, 0.15);
 }
 
 /* Radiant Glows */
 .rpg-glow-gold {
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
-.rpg-glow-cyan {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35), inset 0 0 15px rgba(0, 240, 255, 0.15);
+.rpg-glow-sapphire {
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.4), inset 0 0 15px rgba(59, 130, 246, 0.15);
 }
 
 .rpg-glow-crimson {
-  box-shadow: 0 0 25px rgba(244, 63, 94, 0.4), inset 0 0 15px rgba(244, 63, 94, 0.2);
+  box-shadow: 0 0 25px rgba(225, 29, 72, 0.45), inset 0 0 15px rgba(225, 29, 72, 0.2);
 }
 
-/* Tactile RPG Game Buttons */
+/* Tactile Medieval Royal Gold Buttons */
 .rpg-button {
-  background: linear-gradient(180deg, #d97706 0%, #92400e 100%);
+  background: linear-gradient(180deg, #b45309 0%, #78350f 100%);
   border: 1px solid #fde68a;
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  color: #fffbeb;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
   box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.5),
+    0 4px 8px -1px rgba(0, 0, 0, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.15s ease-out;
+  transition: all 0.18s ease-out;
 }
 .rpg-button:hover {
-  background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+  background: linear-gradient(180deg, #d97706 0%, #92400e 100%);
   box-shadow: 
-    0 0 15px rgba(245, 158, 11, 0.5),
+    0 0 18px rgba(245, 158, 11, 0.6),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }
 .rpg-button:active {
   transform: translateY(1px);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .rpg-button-secondary {
-  background: linear-gradient(180deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: #e2e8f0;
+  background: linear-gradient(180deg, rgba(26, 31, 46, 0.95) 0%, rgba(14, 17, 26, 0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #f4ecd8;
+  font-family: 'Cinzel', Georgia, serif;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.15s ease-out;
+  transition: all 0.18s ease-out;
 }
 .rpg-button-secondary:hover {
   border-color: #d4af37;
-  background: linear-gradient(180deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  background: linear-gradient(180deg, rgba(38, 46, 68, 0.95) 0%, rgba(20, 25, 38, 0.98) 100%);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
 }
 
-/* Diablo-style Glass Spheres for Willpower & Essence */
+/* Diablo-style Glass Spheres for Soul Essence & Hearth Resolve */
 .rpg-orb-essence {
-  background: radial-gradient(circle at 35% 35%, #60a5fa 0%, #2563eb 40%, #1e1b4b 80%, #050510 100%);
+  background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 40%, #1e3a8a 75%, #050a1e 100%);
   box-shadow: 
-    0 0 20px rgba(37, 99, 235, 0.5),
-    inset -5px -5px 15px rgba(0, 0, 0, 0.8),
-    inset 5px 5px 15px rgba(255, 255, 255, 0.4);
+    0 0 25px rgba(59, 130, 246, 0.55),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.85),
+    inset 5px 5px 15px rgba(255, 255, 255, 0.45);
 }
 
 .rpg-orb-resolve {
-  background: radial-gradient(circle at 35% 35%, #fbbf24 0%, #f97316 40%, #7c2d12 80%, #0f0502 100%);
+  background: radial-gradient(circle at 35% 35%, #fde047 0%, #f59e0b 35%, #b45309 70%, #1a0802 100%);
   box-shadow: 
-    0 0 20px rgba(249, 115, 22, 0.5),
-    inset -5px -5px 15px rgba(0, 0, 0, 0.8),
-    inset 5px 5px 15px rgba(255, 255, 255, 0.4);
+    0 0 25px rgba(245, 158, 11, 0.55),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.85),
+    inset 5px 5px 15px rgba(255, 255, 255, 0.45);
 }
 
-/* Floating combat text animation */
+/* Floating combat damage text animation */
 @keyframes combatDamageFloat {
   0% { opacity: 1; transform: translateY(0) scale(1); }
-  50% { transform: translateY(-25px) scale(1.25); }
-  100% { opacity: 0; transform: translateY(-50px) scale(1); }
+  50% { transform: translateY(-28px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-55px) scale(1); }
 }
 
 .animate-combat-damage {
@@ -150,8 +177,8 @@
 /* Screen Shake effect on boss strike */
 @keyframes rpgShake {
   0%, 100% { transform: translate(0, 0); }
-  10%, 30%, 50%, 70%, 90% { transform: translate(-3px, 2px); }
-  20%, 40%, 60%, 80% { transform: translate(3px, -2px); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-4px, 3px); }
+  20%, 40%, 60%, 80% { transform: translate(4px, -3px); }
 }
 
 .screen-shake {

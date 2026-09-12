@@ -190,19 +190,19 @@ export const RelicArmory: React.FC<RelicArmoryProps> = ({
       {/* Header & Dragon Gold Purse */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-[#fffbeb] font-display flex items-center gap-2">
             <Castle className="w-5 h-5 text-amber-400" />
-            <span>THE GRAND ARMORY & RELIC VAULT</span>
+            <span>THE MYSTIC ARMORY & ALCHEMIST'S BAZAAR</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Spend mined Dragon Gold on 3D legendary weapons, Aegis stasis runes, visual realm skins, and tavern feasts.
+          <p className="text-xs text-amber-200/70 mt-0.5 font-serif">
+            Exchange mined Gold Sovereigns for 3D enchanted relics, Gargoyle Stasis Wards, celestial realm aesthetics, and real-world tavern feasts.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-400 font-mono font-bold text-sm shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-300 font-mono font-bold text-sm shadow-[0_0_15px_rgba(245,158,11,0.25)]">
             <Coins className="w-4 h-4 text-amber-300" />
-            <span>{user.currentGold} DRAGON GOLD</span>
+            <span>{user.currentGold} GOLD SOVEREIGNS</span>
           </div>
         </div>
       </div>
@@ -211,7 +211,7 @@ export const RelicArmory: React.FC<RelicArmoryProps> = ({
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-3.5 rounded-xl bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs font-mono flex items-center gap-2"
+          className="p-3.5 rounded-xl bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs font-serif flex items-center gap-2"
         >
           <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
           <span>{notice}</span>
@@ -221,9 +221,9 @@ export const RelicArmory: React.FC<RelicArmoryProps> = ({
       {/* Armory Category Hotbar */}
       <div className="flex items-center gap-2 p-1.5 bg-black/60 rounded-2xl border border-amber-500/30 overflow-x-auto">
         {[
-          { id: 'WEAPONS', label: '3D Legendary Relics', icon: Sword },
-          { id: 'THEMES', label: 'Visual Realms', icon: Palette },
-          { id: 'STASIS', label: 'Runes of Stasis', icon: Snowflake },
+          { id: 'WEAPONS', label: '3D Enchanted Relics', icon: Sword },
+          { id: 'THEMES', label: 'Sanctuary Realms', icon: Palette },
+          { id: 'STASIS', label: 'Gargoyle Stasis Wards', icon: Snowflake },
           { id: 'TAVERN', label: 'Tavern Feasts & Treats', icon: Beer },
         ].map((tab) => {
           const Icon = tab.icon;
@@ -235,7 +235,7 @@ export const RelicArmory: React.FC<RelicArmoryProps> = ({
                 sound.playBlip();
                 setCategory(tab.id as any);
               }}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono font-bold whitespace-nowrap transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-serif font-bold whitespace-nowrap transition-all ${
                 isActive
                   ? 'bg-amber-500/25 text-amber-300 border border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                   : 'text-slate-400 hover:text-white'

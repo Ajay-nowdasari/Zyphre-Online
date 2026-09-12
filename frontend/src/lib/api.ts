@@ -11,7 +11,7 @@ export interface User {
   streakCount: number;
   streakFreezeCount: number;
   unspentStatPoints: number;
-  activeTheme: 'CYBERPUNK' | 'LOFI' | 'RETRO_DUNGEON';
+  activeTheme: 'ELDEN_REALM' | 'CATHEDRAL_ARCANA' | 'RETRO_DUNGEON';
   characterClass?: string;
   characterTitle?: string;
   currentChapter?: number;

@@ -182,59 +182,126 @@ export const Sanctuary3DStage: React.FC<Sanctuary3DStageProps> = ({
     // 6. Dynamic 3D Equipment
     const hasGear = (key: string) => equippedGear.includes(key);
 
-    // Flaming Sword / Dragon Blade
+    // Sunforged Flaming Broadsword
     if (hasGear('GEAR_CYBER_KATANA') || mode === 'BOSS_COLOSSEUM') {
-      const bladeGeo = new THREE.BoxGeometry(0.06, 1.3, 0.1);
-      const bladeMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
-      const sword = new THREE.Mesh(bladeGeo, bladeMat);
-      sword.position.set(0.65, 0.45, 0.25);
-      sword.rotation.z = -0.3;
-      bodyGroup.add(sword);
+      const bladeGroup = new THREE.Group();
+      bladeGroup.position.set(0.65, 0.45, 0.25);
+      bladeGroup.rotation.z = -0.3;
+      bodyGroup.add(bladeGroup);
 
-      const crossguardGeo = new THREE.BoxGeometry(0.28, 0.06, 0.12);
-      const crossguard = new THREE.Mesh(crossguardGeo, goldTrimMat);
-      crossguard.position.set(0.52, -0.15, 0.25);
-      crossguard.rotation.z = -0.3;
-      bodyGroup.add(crossguard);
-    }
-
-    // Radiant Wings of Aether
-    if (hasGear('GEAR_CHRONO_WINGS')) {
-      const wingGeo = new THREE.ConeGeometry(0.25, 1.4, 4);
-      const wingMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, wireframe: true });
-
-      const lWing = new THREE.Mesh(wingGeo, wingMat);
-      lWing.position.set(-0.85, 0.85, -0.35);
-      lWing.rotation.z = 0.9;
-      bodyGroup.add(lWing);
-
-      const rWing = new THREE.Mesh(wingGeo, wingMat);
-      rWing.position.set(0.85, 0.85, -0.35);
-      rWing.rotation.z = -0.9;
-      bodyGroup.add(rWing);
-    }
-
-    // Aegis Shield of Stasis
-    if (hasGear('GEAR_AEGIS_SHIELD')) {
-      const shieldGeo = new THREE.IcosahedronGeometry(0.38, 1);
-      const shieldMat = new THREE.MeshStandardMaterial({
-        color: 0x00f0ff,
-        transparent: true,
-        opacity: 0.65,
-        wireframe: true,
+      // Steel blade core
+      const bladeGeo = new THREE.BoxGeometry(0.08, 1.4, 0.04);
+      const bladeMat = new THREE.MeshStandardMaterial({
+        color: 0xe2e8f0,
+        metalness: 0.95,
+        roughness: 0.15,
       });
-      const shield = new THREE.Mesh(shieldGeo, shieldMat);
-      shield.position.set(-0.72, 0.4, 0.3);
-      bodyGroup.add(shield);
+      const swordBlade = new THREE.Mesh(bladeGeo, bladeMat);
+      bladeGroup.add(swordBlade);
+
+      // Glowing Solar/Fire aura around blade
+      const auraGeo = new THREE.BoxGeometry(0.12, 1.44, 0.07);
+      const auraMat = new THREE.MeshBasicMaterial({
+        color: 0xf59e0b,
+        transparent: true,
+        opacity: 0.55,
+      });
+      const aura = new THREE.Mesh(auraGeo, auraMat);
+      bladeGroup.add(aura);
+
+      // Golden ornate crossguard
+      const crossguardGeo = new THREE.BoxGeometry(0.36, 0.08, 0.12);
+      const crossguard = new THREE.Mesh(crossguardGeo, goldTrimMat);
+      crossguard.position.set(0, -0.65, 0);
+      bladeGroup.add(crossguard);
+
+      // Pommel with ruby gem
+      const pommelGeo = new THREE.OctahedronGeometry(0.06);
+      const pommelMat = new THREE.MeshBasicMaterial({ color: 0xe11d48 });
+      const pommel = new THREE.Mesh(pommelGeo, pommelMat);
+      pommel.position.set(0, -0.85, 0);
+      bladeGroup.add(pommel);
     }
 
-    // Celestial Halo of Sovereignty
+    // Seraphic Angelic Wings of Celestial Gold
+    if (hasGear('GEAR_CHRONO_WINGS')) {
+      const wingMat = new THREE.MeshStandardMaterial({
+        color: 0xd4af37,
+        metalness: 0.8,
+        roughness: 0.25,
+        wireframe: false,
+      });
+
+      // Left Wing Array
+      const lWingGroup = new THREE.Group();
+      lWingGroup.position.set(-0.35, 0.6, -0.25);
+      bodyGroup.add(lWingGroup);
+
+      for (let i = 0; i < 4; i++) {
+        const featherGeo = new THREE.ConeGeometry(0.12 - i * 0.02, 1.1 - i * 0.15, 5);
+        const feather = new THREE.Mesh(featherGeo, wingMat);
+        feather.position.set(-0.2 - i * 0.18, 0.3 - i * 0.1, 0);
+        feather.rotation.z = 0.7 + i * 0.25;
+        feather.rotation.y = -0.2;
+        lWingGroup.add(feather);
+      }
+
+      // Right Wing Array
+      const rWingGroup = new THREE.Group();
+      rWingGroup.position.set(0.35, 0.6, -0.25);
+      bodyGroup.add(rWingGroup);
+
+      for (let i = 0; i < 4; i++) {
+        const featherGeo = new THREE.ConeGeometry(0.12 - i * 0.02, 1.1 - i * 0.15, 5);
+        const feather = new THREE.Mesh(featherGeo, wingMat);
+        feather.position.set(0.2 + i * 0.18, 0.3 - i * 0.1, 0);
+        feather.rotation.z = -(0.7 + i * 0.25);
+        feather.rotation.y = 0.2;
+        rWingGroup.add(feather);
+      }
+    }
+
+    // Aegis Kite Shield of Valor (Heraldic Knight Shield)
+    if (hasGear('GEAR_AEGIS_SHIELD')) {
+      const shieldGroup = new THREE.Group();
+      shieldGroup.position.set(-0.68, 0.45, 0.28);
+      bodyGroup.add(shieldGroup);
+
+      // Heater / Kite Shield Plate
+      const shieldGeo = new THREE.CylinderGeometry(0.32, 0.16, 0.85, 6);
+      const shieldMat = new THREE.MeshStandardMaterial({
+        color: 0x141824,
+        roughness: 0.3,
+        metalness: 0.85,
+      });
+      const shieldPlate = new THREE.Mesh(shieldGeo, shieldMat);
+      shieldPlate.rotation.z = Math.PI;
+      shieldGroup.add(shieldPlate);
+
+      // Gold Filigree Border & Cross on Shield
+      const crossVertGeo = new THREE.BoxGeometry(0.06, 0.7, 0.02);
+      const crossVert = new THREE.Mesh(crossVertGeo, goldTrimMat);
+      crossVert.position.z = 0.15;
+      shieldGroup.add(crossVert);
+
+      const crossHorizGeo = new THREE.BoxGeometry(0.3, 0.06, 0.02);
+      const crossHoriz = new THREE.Mesh(crossHorizGeo, goldTrimMat);
+      crossHoriz.position.set(0, 0.1, 0.15);
+      shieldGroup.add(crossHoriz);
+    }
+
+    // Crown of the Sun King (Levitating Runic Diadem)
     if (hasGear('GEAR_RUNIC_HALO')) {
-      const haloGeo = new THREE.TorusGeometry(0.42, 0.025, 16, 32);
-      const haloMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+      const haloGeo = new THREE.TorusGeometry(0.44, 0.028, 16, 32);
+      const haloMat = new THREE.MeshStandardMaterial({
+        color: 0xffd700,
+        emissive: 0xd4af37,
+        emissiveIntensity: 0.6,
+        roughness: 0.2,
+      });
       const halo = new THREE.Mesh(haloGeo, haloMat);
-      halo.rotation.x = Math.PI / 2.2;
-      halo.position.set(0, 1.6, 0);
+      halo.rotation.x = Math.PI / 2.1;
+      halo.position.set(0, 1.55, 0);
       bodyGroup.add(halo);
     }
 
@@ -327,15 +394,15 @@ export const Sanctuary3DStage: React.FC<Sanctuary3DStageProps> = ({
       bossGroup.add(bRing);
     }
 
-    // 9. Combat Projectile / Arcane Beam (Activated upon attackTrigger)
+    // 9. Combat Projectile / Solar Wrath Beam (Activated upon attackTrigger)
     let attackBeam: THREE.Mesh | null = null;
     let attackProgress = 0;
     let isAttacking = false;
 
     if (attackTrigger > 0 && mode === 'BOSS_COLOSSEUM') {
       isAttacking = true;
-      const beamGeo = new THREE.CylinderGeometry(0.08, 0.08, 3.2, 16);
-      const beamMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
+      const beamGeo = new THREE.CylinderGeometry(0.12, 0.12, 3.4, 16);
+      const beamMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
       attackBeam = new THREE.Mesh(beamGeo, beamMat);
       attackBeam.rotation.x = Math.PI / 2;
       attackBeam.position.set(0, 1.0, 0);

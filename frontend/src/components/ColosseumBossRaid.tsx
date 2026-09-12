@@ -89,18 +89,18 @@ export const ColosseumBossRaid: React.FC<ColosseumBossRaidProps> = ({ user, onBo
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-[#fffbeb] font-display flex items-center gap-2">
             <Skull className="w-5 h-5 text-rose-500 animate-pulse" />
-            <span>COLOSSEUM BOSS RAID // {boss.bossName.toUpperCase()}</span>
+            <span>DUNGEON COLOSSEUM // {boss.bossName.toUpperCase()}</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Every real-world trial vanquished channels direct damage to this titan. Vanquish the boss to claim the 250 Gold Slayer Bounty!
+          <p className="text-xs text-amber-200/70 mt-0.5 font-serif">
+            Every real-world bounty vanquished channels a direct smite to this ancient wyrm. Slay the behemoth to claim the 250 Dragon Gold Sovereign Slayer Bounty!
           </p>
         </div>
 
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-300 font-mono text-xs font-bold">
+        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-rose-950/70 border border-rose-500/50 text-rose-300 font-display text-xs font-bold shadow-[0_0_12px_rgba(225,29,72,0.3)]">
           <Swords className="w-4 h-4 text-rose-400" />
-          <span>RAID TIER {boss.bossLevel}</span>
+          <span>DUNGEON TIER {boss.bossLevel}</span>
         </div>
       </div>
 

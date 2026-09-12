@@ -136,57 +136,57 @@ export default function Home() {
                       className="inline-flex items-center gap-1.5 text-[10px] font-mono tracking-widest text-amber-400 uppercase font-bold hover:text-amber-300 transition-colors"
                       title="Click to change Hero Class"
                     >
-                      <span>CLASS: {user?.characterClass ? user.characterClass.replace('_', ' ') : 'CODE SORCERER'}</span>
+                      <span>CLASS: {user?.characterClass ? user.characterClass.replace('_', ' ') : 'VALIANT PALADIN'}</span>
                       <span className="underline text-[9px] text-amber-500">CHANGE</span>
                     </button>
-                    <h2 className="text-2xl font-black text-white font-mono mt-0.5">
-                      {user?.username || 'GUEST INITIATE'}
+                    <h2 className="text-2xl font-black text-[#fffbeb] font-display mt-0.5">
+                      {user?.username || 'LORD VALERIUS'}
                     </h2>
-                    <p className="text-xs text-amber-300/80 font-mono italic">
-                      "{user?.characterTitle || 'Weaver of Silicon & Logic'}"
+                    <p className="text-xs text-amber-300/90 font-serif italic">
+                      "{user?.characterTitle || 'Knight of the Sunlit Oath'}"
                     </p>
                   </div>
 
                   {/* Core Attributes Snapshot */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-                    <div className="p-2 rounded-xl bg-cyan-950/40 border border-cyan-500/30">
-                      <span className="text-[9px] font-mono text-cyan-300 uppercase block font-bold">Arcana</span>
-                      <span className="text-base font-bold font-mono text-cyan-400">
-                        {user?.attributes?.intellect || 10}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center font-serif">
+                    <div className="p-2 rounded-xl bg-amber-950/40 border border-amber-500/30">
+                      <span className="text-[9px] font-display text-amber-300 uppercase block font-bold">Arcana</span>
+                      <span className="text-base font-bold font-mono text-amber-300">
+                        {user?.attributes?.intellect || 14}
                       </span>
                     </div>
-                    <div className="p-2 rounded-xl bg-rose-950/40 border border-rose-500/30">
-                      <span className="text-[9px] font-mono text-rose-300 uppercase block font-bold">Might</span>
-                      <span className="text-base font-bold font-mono text-rose-400">
-                        {user?.attributes?.strength || 10}
+                    <div className="p-2 rounded-xl bg-yellow-950/40 border border-yellow-500/30">
+                      <span className="text-[9px] font-display text-yellow-300 uppercase block font-bold">Might</span>
+                      <span className="text-base font-bold font-mono text-yellow-400">
+                        {user?.attributes?.strength || 15}
                       </span>
                     </div>
                     <div className="p-2 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
-                      <span className="text-[9px] font-mono text-emerald-300 uppercase block font-bold">Fortitude</span>
+                      <span className="text-[9px] font-display text-emerald-300 uppercase block font-bold">Fortitude</span>
                       <span className="text-base font-bold font-mono text-emerald-400">
-                        {user?.attributes?.vitality || 10}
+                        {user?.attributes?.vitality || 13}
                       </span>
                     </div>
                     <div className="p-2 rounded-xl bg-purple-950/40 border border-purple-500/30">
-                      <span className="text-[9px] font-mono text-purple-300 uppercase block font-bold">Presence</span>
+                      <span className="text-[9px] font-display text-purple-300 uppercase block font-bold">Grace</span>
                       <span className="text-base font-bold font-mono text-purple-400">
-                        {user?.attributes?.charisma || 10}
+                        {user?.attributes?.charisma || 12}
                       </span>
                     </div>
                   </div>
 
                   {/* Quick Action to Boss Arena */}
                   <div className="p-3 rounded-2xl bg-black/50 border border-amber-500/30 flex items-center justify-between gap-3">
-                    <div className="text-xs font-mono">
-                      <span className="text-rose-400 font-bold block">COLOSSEUM RAID ACTIVE</span>
-                      <span className="text-slate-400 text-[11px]">Chronos, The Void Titan is waiting</span>
+                    <div className="text-xs">
+                      <span className="text-rose-400 font-bold block font-display">COLOSSEUM RAID ACTIVE</span>
+                      <span className="text-amber-200/70 text-[11px] font-serif">Chronos, The Sloth Wyrm is waiting</span>
                     </div>
                     <button
                       onClick={() => {
                         sound.playBlip();
                         setActiveTab('COLOSSEUM');
                       }}
-                      className="rpg-button px-3 py-1.5 rounded-xl text-xs font-mono font-bold"
+                      className="rpg-button px-3.5 py-1.5 rounded-xl text-xs font-display font-bold"
                     >
                       ENTER ARENA
                     </button>

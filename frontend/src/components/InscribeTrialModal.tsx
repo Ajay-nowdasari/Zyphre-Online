@@ -92,12 +92,12 @@ export const InscribeTrialModal: React.FC<InscribeTrialModalProps> = ({
           </button>
 
           <div className="mb-5">
-            <h2 id="inscribe-trial-title" className="text-xl font-bold font-mono text-white flex items-center gap-2">
+            <h2 id="inscribe-trial-title" className="text-xl font-bold font-display text-[#fffbeb] flex items-center gap-2">
               <Scroll className="w-5 h-5 text-amber-400" />
-              <span>INSCRIBE SACRED TRIAL OF VALOR</span>
+              <span>INSCRIBE ROYAL WRIT OF VALOR</span>
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              Bind a real-world task to the Ascendant Grimoire. Rewards are calculated and guarded by the server.
+            <p className="text-xs text-amber-200/70 mt-1 font-serif">
+              Inscribe a real-world undertaking onto the Golden Scroll. Rewards and anti-cheat validations are strictly guarded by the realm's server.
             </p>
           </div>
 

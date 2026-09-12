@@ -157,12 +157,12 @@ export const TrialsOfValor: React.FC<TrialsOfValorProps> = ({
       {/* Header with Game Inscription Button */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-[#fffbeb] font-display flex items-center gap-2">
             <Scroll className="w-5 h-5 text-amber-400" />
-            <span>TRIALS OF VALOR // SACRED GRIMOIRE</span>
+            <span>SACRED BOUNTIES & ROYAL WRITS</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Slay real-world stagnation. Each trial vanquished siphons Soul Essence (XP), mines Dragon Gold, and unleashes strikes upon the World Boss.
+          <p className="text-xs text-amber-200/70 mt-0.5 font-serif">
+            Slay worldly hesitation. Each completed writ channels Soul Essence, yields Dragon Gold Sovereigns, and directs devastating attacks upon the Colosseum Boss.
           </p>
         </div>
 
@@ -171,10 +171,10 @@ export const TrialsOfValor: React.FC<TrialsOfValorProps> = ({
             sound.playBlip();
             onOpenInscribeModal();
           }}
-          className="rpg-button px-5 py-2.5 rounded-xl font-mono text-xs font-bold flex items-center justify-center gap-2"
+          className="rpg-button px-5 py-2.5 rounded-xl font-display text-xs font-bold flex items-center justify-center gap-2"
         >
           <Plus className="w-4 h-4 text-amber-200" />
-          <span>INSCRIBE NEW TRIAL</span>
+          <span>INSCRIBE ROYAL WRIT</span>
         </button>
       </div>
 

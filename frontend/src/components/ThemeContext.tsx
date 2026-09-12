@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { sound } from './AudioEngine';
 
-export type AppTheme = 'CYBERPUNK' | 'LOFI' | 'RETRO_DUNGEON';
+export type AppTheme = 'ELDEN_REALM' | 'CATHEDRAL_ARCANA' | 'RETRO_DUNGEON';
 
 interface ThemeContextType {
   theme: AppTheme;
@@ -13,20 +13,20 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: 'CYBERPUNK',
+  theme: 'ELDEN_REALM',
   changeTheme: () => {},
   isMuted: false,
   toggleAudioMute: () => {},
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<AppTheme>('CYBERPUNK');
+  const [theme, setThemeState] = useState<AppTheme>('ELDEN_REALM');
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
   useEffect(() => {
     // Load local stored theme if any
     const savedTheme = localStorage.getItem('life_rpg_theme') as AppTheme;
-    if (savedTheme && ['CYBERPUNK', 'LOFI', 'RETRO_DUNGEON'].includes(savedTheme)) {
+    if (savedTheme && ['ELDEN_REALM', 'CATHEDRAL_ARCANA', 'RETRO_DUNGEON'].includes(savedTheme)) {
       setThemeState(savedTheme);
       applyBodyTheme(savedTheme);
     }
@@ -35,9 +35,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const applyBodyTheme = (t: AppTheme) => {
     if (typeof document !== 'undefined') {
-      document.body.classList.remove('theme-lofi', 'theme-retro');
-      if (t === 'LOFI') {
-        document.body.classList.add('theme-lofi');
+      document.body.classList.remove('theme-cathedral', 'theme-retro');
+      if (t === 'CATHEDRAL_ARCANA') {
+        document.body.classList.add('theme-cathedral');
       } else if (t === 'RETRO_DUNGEON') {
         document.body.classList.add('theme-retro');
       }

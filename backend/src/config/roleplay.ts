@@ -10,44 +10,44 @@ export interface CharacterClassDef {
 }
 
 export const CHARACTER_CLASSES: Record<string, CharacterClassDef> = {
-  CODE_SORCERER: {
-    key: 'CODE_SORCERER',
-    name: 'Code Sorcerer',
-    title: 'Weaver of Silicon & Logic',
-    lore: 'Channels the arcane flow of computational logic, turning syntax into digital power and architecture into impenetrable bastions.',
+  ARCHMAGE_OF_RUNES: {
+    key: 'ARCHMAGE_OF_RUNES',
+    name: 'Rune Archmage',
+    title: 'Scholar of the Grand Arcana',
+    lore: 'Channels the primordial currents of arcane logic and deep study. Weaves ancient grimoires and intense mental disciplines into reality-bending power.',
     primaryAttribute: 'INTELLECT',
-    perkName: 'Overclock Protocol',
-    perkDescription: '+15% bonus XP on all Intellect & mental focus quests.',
+    perkName: 'Arcane Focus',
+    perkDescription: '+15% bonus Soul Essence (XP) on all Intellect & deep knowledge trials.',
     icon: 'Brain',
   },
-  KINETIC_VANGUARD: {
-    key: 'KINETIC_VANGUARD',
-    name: 'Kinetic Vanguard',
-    title: 'Champion of Iron Will',
-    lore: 'Hardened through relentless biological discipline and physical exertion. Treats every obstacle as resistance to be conquered.',
+  VALIANT_PALADIN: {
+    key: 'VALIANT_PALADIN',
+    name: 'Valiant Paladin',
+    title: 'Knight of the Sunlit Oath',
+    lore: 'Tempered in the fires of heavy physical labor, iron discipline, and relentless trials of might. Faces every earthly hardship with an unyielding shield.',
     primaryAttribute: 'STRENGTH',
-    perkName: 'Iron Momentum',
-    perkDescription: '+20% bonus Gold mined on all physical conditioning tasks.',
+    perkName: 'Crusader Might',
+    perkDescription: '+20% bonus Gold Sovereigns mined from all physical training trials.',
     icon: 'Dumbbell',
   },
-  BIO_SENTINEL: {
-    key: 'BIO_SENTINEL',
-    name: 'Bio-Sentinel',
-    title: 'Guardian of Cellular Equilibrium',
-    lore: 'Master of somatic restoration, deep sleep, and neurochemical recovery. Protects the mind and vessel from mental fatigue.',
+  TEMPLAR_GUARDIAN: {
+    key: 'TEMPLAR_GUARDIAN',
+    name: 'Templar Guardian',
+    title: 'Warden of the Eternal Flame',
+    lore: 'Vested with the vitality of ancient roots and holy regeneration. Masters restorative sleep, fasting, and bodily rejuvenation to shield against burnout.',
     primaryAttribute: 'VITALITY',
-    perkName: 'Cellular Aegis',
-    perkDescription: 'Grants +1 additional maximum Streak Freeze capacity and faster resilience recovery.',
+    perkName: 'Holy Bastion',
+    perkDescription: 'Grants +1 additional maximum Gargoyle Stasis Ward and accelerated vitality restoration.',
     icon: 'Heart',
   },
-  CYBER_INFILTRATOR: {
-    key: 'CYBER_INFILTRATOR',
-    name: 'Cyber Infiltrator',
-    title: 'Diplomat of the Neon Grid',
-    lore: 'Navigates human networks, leadership alliances, and social engineering. Unlocks closed doors through charisma and influence.',
+  ROYAL_HERALD: {
+    key: 'ROYAL_HERALD',
+    name: 'Royal Herald',
+    title: 'Lord of Alliances & Parley',
+    lore: 'Commands courtly eloquence, persuasive rhetoric, and diplomatic mastery. Unlocks barred gates and wins loyalty across kingdoms through magnetic charisma.',
     primaryAttribute: 'CHARISMA',
-    perkName: 'Syndicate Bargain',
-    perkDescription: 'Permanent 15% discount across all merchant catalog offerings.',
+    perkName: 'Royal Decree',
+    perkDescription: 'Permanent 15% discount across all merchant catalog wares in the Grand Bazaar.',
     icon: 'Users',
   },
 };
@@ -56,46 +56,46 @@ export const STORY_CHAPTERS = [
   {
     chapter: 1,
     requiredLevel: 1,
-    title: 'The Neon Awakening',
+    title: 'The Slumber in the Sunken Ruins',
     prologue:
-      'You awaken in the shadow of the digital spire. The noise of endless micro-distractions threatened to drown your ambition, until the Neural Core sparked to life.',
+      'You awaken on cold basalt beneath the crumbling archways of an ancient sanctuary. The fog of inertia and worldly distractions once clouded your spirit, until the sacred Bonfire flared.',
     epilogue:
-      'With your initial quests sealed in blood and code, you step beyond the threshold of hesitation.',
+      'With your first trials inscribed upon the Golden Parchment, you rise as an anointed Initiate of the Realm.',
   },
   {
     chapter: 2,
     requiredLevel: 2,
-    title: 'Breaking the Chains of Distraction',
+    title: 'The Trial of the Obsidian Gate',
     prologue:
-      'The sirens of instant gratification call from the digital void. Sirens of dopamine loops that yield no real-world triumph.',
+      'The sirens of idle amusement whisper from the dark chasms. Phantom mirages seek to quench your hearth flame before your discipline can take root.',
     epilogue:
-      'You severed the phantom tether. Your streak stands as an unbroken fortress against the void.',
+      'Your will held true. Your Torch of Discipline burns unyielding, lighting the path forward through the mountain passes.',
   },
   {
     chapter: 3,
     requiredLevel: 3,
-    title: 'The Sanctuary of Deep Focus',
+    title: 'The Cloister of Deep Contemplation',
     prologue:
-      'Deep within the citadel lies the Chamber of Single-Tasking. Here, hours distill into monumental breakthroughs.',
+      'High in the cloud-kissed peaks stands the Great Spire of Solitude. Here, vows of uninterrupted study and rigorous training forge masterworks of human craft.',
     epilogue:
-      'Your intellect and stamina harmonize. The title of Adept Vanguard is etched onto your profile.',
+      'Your intellect and stamina ascend in divine balance. The title of Knight Adept is engraved upon your signet ring.',
   },
   {
     chapter: 4,
     requiredLevel: 4,
-    title: 'Conquering the Void of Procrastination',
+    title: 'The Siege of the Sloth Wyrm',
     prologue:
-      'Chronos stirs in the depths. Every delayed task feeds the beast. Only immediate tactical action can strike its core.',
+      'Chronos the Sloth Wyrm coils in the Colosseum depths below. Every delayed chore and abandoned duty nourishes the beast. Only immediate, decisive valor can shatter its scales.',
     epilogue:
-      'The beast recoils. Real-world tasks materialize into tangible virtual treasures and mastery.',
+      'The wyrm roars and retreats into the abyss. Every real-world victory shatters darkness into golden spoils and sovereign glory.',
   },
   {
     chapter: 5,
     requiredLevel: 5,
-    title: 'Ascension to Grand Archon',
+    title: 'Coronation of the Grand Sovereign',
     prologue:
-      'You stand at the pinnacle of self-mastery. The physical vessel, the computational mind, and the unbroken habit loop unite.',
+      'You ascend the marble dais of the High Citadel. The physical vessel, the enlightened intellect, and the iron habit loop unite into an immortal legend.',
     epilogue:
-      'You are no longer merely playing an RPG — your life has become the legendary campaign.',
+      'You no longer merely struggle against worldly hesitation — your daily deeds now shape the destiny of the entire Realm.',
   },
 ];

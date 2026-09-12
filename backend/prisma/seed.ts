@@ -21,35 +21,37 @@ async function main() {
   const demoHero = await prisma.user.create({
     data: {
       email: 'demo@liferpg.dev',
-      username: 'CyberVanguard',
+      username: 'LordValerius',
+      characterTitle: 'Knight of the Sunlit Oath',
+      characterClass: 'VALIANT_PALADIN',
       passwordHash,
       level: 1,
       currentXp: 40,
-      currentGold: 180,
-      lifetimeGold: 180,
+      currentGold: 220,
+      lifetimeGold: 220,
       streakCount: 3,
       streakFreezeCount: 2,
       unspentStatPoints: 3,
-      activeTheme: 'CYBERPUNK',
+      activeTheme: 'ELDEN_REALM',
       attributes: {
         create: {
           intellect: 14,
-          strength: 12,
-          vitality: 11,
-          charisma: 13,
+          strength: 15,
+          vitality: 13,
+          charisma: 12,
         },
       },
       inventory: {
         create: [
           {
-            itemKey: 'THEME_CYBERPUNK',
-            name: 'Cyberpunk Neon Theme',
+            itemKey: 'THEME_ELDEN_REALM',
+            name: 'Elden Realm (Dark Fantasy)',
             category: 'THEME',
             isEquipped: true,
           },
           {
             itemKey: 'GEAR_CYBER_KATANA',
-            name: 'Plasma Cyber-Katana',
+            name: 'Sunforged Broadsword',
             category: 'GEAR',
             isEquipped: true,
           },
@@ -113,21 +115,21 @@ async function main() {
       customRewards: {
         create: [
           {
-            title: '1 Hour Cyberpunk 2077 Session',
-            description: 'Explore Night City with pure immersion after checking off all dailies.',
-            cost: 100,
+            title: 'Tavern Feast of the Golden Boar',
+            description: 'Enjoy your favorite indulgent feast guilt-free after slaying daily trials.',
+            cost: 120,
+            icon: 'Beer',
+          },
+          {
+            title: '1 Hour of Guilt-Free Realm Gaming',
+            description: 'Play Elden Ring, Baldurs Gate, or Dark Souls with a clear conscience.',
+            cost: 80,
             icon: 'Gamepad2',
           },
           {
-            title: 'Artisan Matcha Latte & Pastry',
-            description: 'High-grade focus fuel at the neighborhood cafe.',
-            cost: 60,
-            icon: 'Coffee',
-          },
-          {
-            title: 'Sci-Fi Novel Reading Evening',
-            description: 'Relax with 2 uninterrupted chapters of hard sci-fi.',
-            cost: 40,
+            title: 'Ancient Folio & Coffee Reading Hour',
+            description: 'Relax with 2 uninterrupted chapters of epic fantasy lore.',
+            cost: 50,
             icon: 'BookOpen',
           },
         ],

@@ -29,13 +29,13 @@ export const QuestCore3D: React.FC<QuestCore3DProps> = ({ burstTrigger, activeAt
     containerRef.current.appendChild(renderer.domElement);
 
     // Color based on theme and activeAttribute
-    let coreColor = 0x00f0ff;
-    if (activeAttribute === 'INTELLECT') coreColor = 0x38bdf8;
-    else if (activeAttribute === 'STRENGTH') coreColor = 0xf43f5e;
+    let coreColor = 0xd4af37;
+    if (activeAttribute === 'INTELLECT') coreColor = 0x3b82f6;
+    else if (activeAttribute === 'STRENGTH') coreColor = 0xf59e0b;
     else if (activeAttribute === 'VITALITY') coreColor = 0x10b981;
     else if (activeAttribute === 'CHARISMA') coreColor = 0xa855f7;
-    else if (theme === 'LOFI') coreColor = 0xf59e0b;
-    else if (theme === 'RETRO_DUNGEON') coreColor = 0xfbbf24;
+    else if (theme === 'CATHEDRAL_ARCANA') coreColor = 0x60a5fa;
+    else if (theme === 'RETRO_DUNGEON') coreColor = 0xe11d48;
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);

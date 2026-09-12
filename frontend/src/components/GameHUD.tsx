@@ -58,26 +58,26 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         <div className="flex items-center gap-3.5">
           <div className="relative">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-500 via-amber-600 to-yellow-600 p-0.5 shadow-[0_0_18px_rgba(245,158,11,0.5)]">
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-amber-400 font-mono font-black text-sm">
-                R{level}
+              <div className="w-full h-full bg-[#0d101a] rounded-[14px] flex items-center justify-center text-amber-400 font-serif font-black text-sm">
+                L{level}
               </div>
             </div>
-            <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-amber-500 text-black font-mono font-bold text-[9px]">
-              RANK
+            <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 rounded-full bg-amber-500 text-black font-serif font-bold text-[9px]">
+              LVL
             </span>
           </div>
 
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-base sm:text-lg font-black tracking-wider text-white font-mono flex items-center gap-1.5">
-                <span>AETHERIA</span>
-                <span className="text-amber-400 text-xs px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
+              <h1 className="text-base sm:text-lg font-black tracking-wider text-[#fffbeb] font-display flex items-center gap-1.5">
+                <span>ELDEN REALM</span>
+                <span className="text-amber-400 text-xs px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 font-mono">
                   RPG CLIENT
                 </span>
               </h1>
             </div>
-            <p className="text-[11px] text-amber-300/80 font-mono">
-              {user ? `${user.username} • ${user.characterTitle || 'Champion of Resolve'}` : 'Guest Initiate'}
+            <p className="text-[11px] text-amber-300/90 font-serif">
+              {user ? `${user.username} • ${user.characterTitle || 'Knight of the Sunlit Oath'}` : 'Wandering Initiate'}
             </p>
           </div>
         </div>
@@ -85,18 +85,18 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         {/* Center Willpower & Soul XP Bar */}
         {user && (
           <div className="hidden md:flex flex-col items-center w-72 lg:w-96">
-            <div className="flex items-center justify-between w-full text-[11px] font-mono mb-1">
-              <span className="text-cyan-300 font-bold flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="flex items-center justify-between w-full text-[11px] font-serif mb-1">
+              <span className="text-amber-300 font-bold flex items-center gap-1">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>SOUL ESSENCE (XP)</span>
               </span>
-              <span className="text-slate-300">
+              <span className="text-amber-100/90 font-mono">
                 {currentXp} / {xpRequired} ({xpPct}%)
               </span>
             </div>
-            <div className="w-full h-3 rounded-full bg-black/80 border border-amber-500/30 overflow-hidden p-0.5">
+            <div className="w-full h-3.5 rounded-full bg-[#090b12] border border-amber-500/40 overflow-hidden p-0.5 shadow-inner">
               <div
-                className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(0,240,255,0.7)] transition-all duration-500"
+                className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-yellow-300 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)] transition-all duration-500"
                 style={{ width: `${xpPct}%` }}
               />
             </div>
@@ -107,25 +107,25 @@ export const GameHUD: React.FC<GameHUDProps> = ({
         <div className="flex items-center gap-2.5 sm:gap-3">
           {user && (
             <>
-              {/* Dragon Gold */}
-              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-400 font-mono text-xs font-bold shadow-[0_0_12px_rgba(245,158,11,0.2)]">
+              {/* Gold Sovereigns */}
+              <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/40 text-amber-300 font-mono text-xs font-bold shadow-[0_0_12px_rgba(245,158,11,0.2)]" title="Gold Sovereigns">
                 <Coins className="w-4 h-4 text-amber-300" />
                 <span>{user.currentGold} G</span>
               </div>
 
-              {/* Flame of Resolve (Streak) */}
+              {/* Bonfire Flame of Resolve (Streak) */}
               <div
                 className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/15 border border-rose-500/40 text-rose-300 font-mono text-xs font-bold"
-                title={`${streak} Days Unbroken • ${streakMultiplier}x Reward Multiplier Boost`}
+                title={`${streak} Days Sacred Bonfire • ${streakMultiplier}x Soul Essence Multiplier`}
               >
                 <Flame className="w-4 h-4 text-rose-400 animate-pulse" />
                 <span>{streak}D ({streakMultiplier}x)</span>
               </div>
 
-              {/* Stasis Runes (Freezes) */}
+              {/* Gargoyle Stasis Wards (Freezes) */}
               <div
                 className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-sky-500/15 border border-sky-500/40 text-sky-300 font-mono text-xs font-bold"
-                title={`${user.streakFreezeCount} Aegis Stasis Runes guarding your flame`}
+                title={`${user.streakFreezeCount} Gargoyle Stasis Wards shielding your sacred fire`}
               >
                 <Snowflake className="w-4 h-4 text-sky-400" />
                 <span>{user.streakFreezeCount}</span>
@@ -149,16 +149,16 @@ export const GameHUD: React.FC<GameHUDProps> = ({
               onOpenAudit();
             }}
             className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-all"
-            title="Cryptographic Audit Ledger & Anti-Cheat Proofs"
+            title="Ascendant Grimoire Audit Ledger & Anti-Cheat Proofs"
           >
-            <History className="w-4 h-4" />
+            <History className="w-4 h-4 text-amber-400/80" />
           </button>
 
           {user ? (
             <button
               onClick={onLogout}
               className="p-2 rounded-xl text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 border border-white/10 transition-all"
-              title="Sever Neural Link (Log Out)"
+              title="Rest at Campfire (Log Out)"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -168,7 +168,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({
                 sound.playBlip();
                 onOpenAuth();
               }}
-              className="rpg-button px-4 py-1.5 rounded-xl text-xs font-mono font-bold"
+              className="rpg-button px-4 py-1.5 rounded-xl text-xs font-display font-bold"
             >
               SUMMON CHAMPION
             </button>

@@ -10,6 +10,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        realm: {
+          void: '#050608',
+          basalt: '#0b0d13',
+          slate: '#141824',
+          card: '#10131d',
+          border: 'rgba(212, 175, 55, 0.25)',
+          gold: '#d4af37',
+          amber: '#f59e0b',
+          crimson: '#e11d48',
+          sapphire: '#3b82f6',
+          emerald: '#10b981',
+          parchment: '#f4ecd8',
+        },
         cyber: {
           dark: '#0a0a12',
           card: '#121220',
@@ -40,7 +53,9 @@ const config: Config = {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        display: ['Orbitron', 'sans-serif'],
+        display: ['Cinzel', 'Georgia', 'serif'],
+        cinzel: ['Cinzel', 'Georgia', 'serif'],
+        decorative: ['Cinzel Decorative', 'Cinzel', 'serif'],
       },
       animation: {
         'pulse-glow': 'pulseGlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

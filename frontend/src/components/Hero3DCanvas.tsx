@@ -36,19 +36,19 @@ export const Hero3DCanvas: React.FC<Hero3DCanvasProps> = ({
     renderer.shadowMap.enabled = true;
     containerRef.current.appendChild(renderer.domElement);
 
-    // 3. Theme-based Colors
-    let primaryColorHex = 0x00f0ff; // Cyber cyan
-    let secondaryColorHex = 0xff007f; // Cyber magenta
-    let ambientLightColor = 0x404060;
+    // 3. Theme-based Colors (Elden Realm / High Fantasy)
+    let primaryColorHex = 0xd4af37; // Royal Gold
+    let secondaryColorHex = 0xf59e0b; // Amber Fire
+    let ambientLightColor = 0x252835;
 
-    if (theme === 'LOFI') {
-      primaryColorHex = 0xf59e0b; // Warm amber
-      secondaryColorHex = 0xd97706;
-      ambientLightColor = 0x604530;
+    if (theme === 'CATHEDRAL_ARCANA') {
+      primaryColorHex = 0x3b82f6; // Arcane sapphire
+      secondaryColorHex = 0x60a5fa;
+      ambientLightColor = 0x1e2640;
     } else if (theme === 'RETRO_DUNGEON') {
       primaryColorHex = 0xfbbf24; // Runic gold
-      secondaryColorHex = 0xa855f7; // Mystic purple
-      ambientLightColor = 0x452560;
+      secondaryColorHex = 0xe11d48; // Crimson ruby
+      ambientLightColor = 0x351520;
     }
 
     // 4. Lighting

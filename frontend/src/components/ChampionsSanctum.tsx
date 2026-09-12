@@ -84,12 +84,12 @@ export const ChampionsSanctum: React.FC<ChampionsSanctumProps> = ({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-[#fffbeb] font-display flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-400" />
             <span>CHAMPION'S SANCTUM // ATTRIBUTE MATRICES</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Allocating attribute points amplifies your passive damage, soul extraction rate, and merchant discounts.
+          <p className="text-xs text-amber-200/70 mt-0.5 font-serif">
+            Distribute attribute blessings earned from leveling. Invest in Might, Arcana, Fortitude, and Grace to amplify your strike power, XP extraction, and merchant discounts.
           </p>
         </div>
 
@@ -99,10 +99,10 @@ export const ChampionsSanctum: React.FC<ChampionsSanctumProps> = ({
               sound.playBlip();
               onOpenClassModal();
             }}
-            className="rpg-button px-3.5 py-1.5 rounded-xl font-mono text-xs font-bold flex items-center gap-1.5"
+            className="rpg-button px-3.5 py-1.5 rounded-xl font-display text-xs font-bold flex items-center gap-1.5"
           >
-            <Zap className="w-3.5 h-3.5" />
-            <span>{user.characterClass ? user.characterClass.replace('_', ' ') : 'CLASS SELECTION'}</span>
+            <Zap className="w-3.5 h-3.5 text-amber-200" />
+            <span>{user.characterClass ? user.characterClass.replace('_', ' ') : 'CHOOSE OATH'}</span>
           </button>
 
           {availablePoints > 0 && (

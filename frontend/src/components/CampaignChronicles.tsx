@@ -40,12 +40,12 @@ export const CampaignChronicles: React.FC<CampaignChroniclesProps> = ({ user }) 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl font-bold tracking-tight text-white font-mono flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-cyan-400" />
-          <span>LORE CHRONICLES & STORY CAMPAIGN</span>
+        <h2 className="text-xl font-bold tracking-tight text-[#fffbeb] font-display flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-amber-400" />
+          <span>CHRONICLES OF THE ELDEN REALM</span>
         </h2>
-        <p className="text-xs text-slate-400 mt-0.5">
-          Level up your character to unlock subsequent chapters in the ongoing saga of self-mastery.
+        <p className="text-xs text-amber-200/70 mt-0.5 font-serif">
+          Advance your champion through trials to unlock subsequent illuminations in the ongoing crusade of discipline.
         </p>
       </div>
 
