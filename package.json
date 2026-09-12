@@ -1,0 +1,20 @@
+{
+  "name": "life-rpg",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Life RPG: Gamified Real-World Productivity Platform with 3D Assets & Multi-Theme Engine",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "install:all": "npm install && npm install --prefix backend && npm install --prefix frontend",
+    "build": "npm run build --prefix backend && npm run build --prefix frontend",
+    "test": "npm run test --prefix backend",
+    "prisma:generate": "npm run prisma:generate --prefix backend",
+    "prisma:push": "npm run prisma:push --prefix backend",
+    "seed": "npm run seed --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
