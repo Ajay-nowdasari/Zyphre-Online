@@ -8,6 +8,7 @@ import characterRouter from './routes/character.js';
 import shopRouter from './routes/shop.js';
 import rewardsRouter from './routes/rewards.js';
 import auditRouter from './routes/audit.js';
+import roleplayRouter from './routes/roleplay.js';
 
 dotenv.config();
 
@@ -50,6 +51,7 @@ app.use('/api/character', characterRouter);
 app.use('/api/shop', shopRouter);
 app.use('/api/rewards', rewardsRouter);
 app.use('/api/audit', auditRouter);
+app.use('/api/roleplay', roleplayRouter);
 
 // Global Error Handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

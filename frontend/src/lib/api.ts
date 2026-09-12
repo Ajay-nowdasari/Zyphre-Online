@@ -12,6 +12,9 @@ export interface User {
   streakFreezeCount: number;
   unspentStatPoints: number;
   activeTheme: 'CYBERPUNK' | 'LOFI' | 'RETRO_DUNGEON';
+  characterClass?: string;
+  characterTitle?: string;
+  currentChapter?: number;
   attributes?: {
     intellect: number;
     strength: number;
@@ -271,4 +274,42 @@ export const api = {
 
   // Audit Logs
   getAuditLogs: () => request<{ logs: AuditLog[] }>('/api/audit'),
+
+  // Roleplay & Story Campaign
+  getCharacterClasses: () => request<{ classes: any[] }>('/api/roleplay/classes'),
+
+  selectClass: (characterClass: string) =>
+    request<{ user: User; classDef: any }>('/api/roleplay/class', {
+      method: 'PUT',
+      body: JSON.stringify({ characterClass }),
+    }),
+
+  getCampaign: () =>
+    request<{
+      currentLevel: number;
+      characterClass: string;
+      characterTitle: string;
+      chapters: Array<{
+        chapter: number;
+        requiredLevel: number;
+        title: string;
+        prologue: string;
+        epilogue: string;
+        isUnlocked: boolean;
+        isCurrent: boolean;
+      }>;
+    }>('/api/roleplay/campaign'),
+
+  getBossRaid: () =>
+    request<{
+      boss: {
+        id: string;
+        bossName: string;
+        bossTitle: string;
+        currentHp: number;
+        maxHp: number;
+        bossLevel: number;
+        isDefeated: boolean;
+      };
+    }>('/api/roleplay/boss'),
 };

@@ -30,6 +30,11 @@ import { StreakFortress } from '../components/StreakFortress';
 import { VirtualShop } from '../components/VirtualShop';
 import { AuthModal } from '../components/AuthModal';
 import { AuditHistoryModal } from '../components/AuditHistoryModal';
+import { CompanionFamiliar } from '../components/CompanionFamiliar';
+import { BossRaidArena } from '../components/BossRaidArena';
+import { ClassSelectionModal } from '../components/ClassSelectionModal';
+import { CampaignChronicles } from '../components/CampaignChronicles';
+import { Skull, BookOpen } from 'lucide-react';
 
 export default function Home() {
   const { theme, changeTheme, isMuted, toggleAudioMute } = useTheme();
@@ -37,12 +42,13 @@ export default function Home() {
   const [user, setUser] = useState<User | null>(null);
   const [characterDetails, setCharacterDetails] = useState<any>(null);
   const [quests, setQuests] = useState<Quest[]>([]);
-  const [activeTab, setActiveTab] = useState<'QUESTS' | 'CHARACTER' | 'STREAK' | 'SHOP'>('QUESTS');
+  const [activeTab, setActiveTab] = useState<'QUESTS' | 'CHARACTER' | 'STREAK' | 'SHOP' | 'BOSS' | 'CHRONICLES'>('QUESTS');
 
   // Modals
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isCreateQuestOpen, setIsCreateQuestOpen] = useState(false);
   const [isAuditOpen, setIsAuditOpen] = useState(false);
+  const [isClassModalOpen, setIsClassModalOpen] = useState(false);
 
   // 3D FX triggers
   const [coreBurstTrigger, setCoreBurstTrigger] = useState(0);
@@ -250,12 +256,23 @@ export default function Home() {
             <div className="lg:col-span-5 p-6 sm:p-8 space-y-5 border-t lg:border-t-0 lg:border-l border-white/10">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase font-bold">
-                    HERO CLASS: PROTOCOL SPECIALIST
-                  </span>
+                  <button
+                    onClick={() => {
+                      sound.playBlip();
+                      setIsClassModalOpen(true);
+                    }}
+                    className="inline-flex items-center gap-1.5 text-[10px] font-mono tracking-widest text-cyan-400 uppercase font-bold hover:text-cyan-300 transition-colors"
+                    title="Click to switch character class"
+                  >
+                    <span>CLASS: {user?.characterClass ? user.characterClass.replace('_', ' ') : 'CODE SORCERER'}</span>
+                    <span className="underline text-[9px] text-cyan-500">CHANGE</span>
+                  </button>
                   <h2 className="text-2xl font-extrabold text-white font-mono mt-0.5">
                     {user?.username || 'GUEST AVATAR'}
                   </h2>
+                  <p className="text-xs text-slate-400 font-mono italic">
+                    "{user?.characterTitle || 'Weaver of Silicon & Logic'}"
+                  </p>
                 </div>
                 <div className="w-16 h-16 shrink-0">
                   <QuestCore3D burstTrigger={coreBurstTrigger} />
@@ -305,12 +322,22 @@ export default function Home() {
           </div>
         </section>
 
+        {/* AI FAMILIAR COMPANION BRIEFING */}
+        {user && (
+          <CompanionFamiliar
+            user={user}
+            onOpenClassModal={() => setIsClassModalOpen(true)}
+          />
+        )}
+
         {/* PRIMARY NAVIGATION TABS */}
-        <nav aria-label="Game Sections" className="flex items-center justify-center">
+        <nav aria-label="Game Sections" className="flex items-center justify-center overflow-x-auto pb-2">
           <div className="inline-flex p-1.5 rounded-2xl glass-panel border border-white/10 gap-1 sm:gap-2 shadow-xl">
             {[
               { id: 'QUESTS', label: 'Quests Log', icon: ListTodo },
               { id: 'CHARACTER', label: 'Character Radar', icon: TrendingUp },
+              { id: 'BOSS', label: 'World Boss Raid', icon: Skull },
+              { id: 'CHRONICLES', label: 'Story Chronicles', icon: BookOpen },
               { id: 'STREAK', label: 'Streak Fortress', icon: Flame },
               { id: 'SHOP', label: 'Virtual Bazaar', icon: ShoppingBag },
             ].map((tab) => {
@@ -323,7 +350,7 @@ export default function Home() {
                     sound.playBlip();
                     setActiveTab(tab.id as any);
                   }}
-                  className={`flex items-center gap-2 px-4 sm:px-6 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all ${
+                  className={`flex items-center gap-2 px-3 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold whitespace-nowrap transition-all ${
                     isActive
                       ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.25)]'
                       : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -356,6 +383,17 @@ export default function Home() {
                 loadUserData();
               }}
             />
+          )}
+
+          {activeTab === 'BOSS' && user && (
+            <BossRaidArena
+              user={user}
+              onBossDefeated={() => loadUserData()}
+            />
+          )}
+
+          {activeTab === 'CHRONICLES' && user && (
+            <CampaignChronicles user={user} />
           )}
 
           {activeTab === 'STREAK' && user && (
@@ -407,6 +445,18 @@ export default function Home() {
         isOpen={isAuditOpen}
         onClose={() => setIsAuditOpen(false)}
       />
+
+      {user && (
+        <ClassSelectionModal
+          isOpen={isClassModalOpen}
+          onClose={() => setIsClassModalOpen(false)}
+          currentUser={user}
+          onClassUpdated={(updatedUser) => {
+            setUser(updatedUser);
+            loadUserData();
+          }}
+        />
+      )}
     </main>
   );
 }

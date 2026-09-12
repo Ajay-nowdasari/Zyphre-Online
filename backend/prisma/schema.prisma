@@ -21,6 +21,9 @@ model User {
   streakFreezeCount  Int             @default(1)
   unspentStatPoints  Int             @default(0)
   activeTheme        String          @default("CYBERPUNK")
+  characterClass     String          @default("CODE_SORCERER") // CODE_SORCERER, KINETIC_VANGUARD, BIO_SENTINEL, CYBER_INFILTRATOR
+  characterTitle     String          @default("Initiate of Focus")
+  currentChapter     Int             @default(1)
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
 
@@ -29,6 +32,7 @@ model User {
   inventory          InventoryItem[]
   customRewards      CustomReward[]
   auditLogs          AuditLog[]
+  bossRaids          BossRaid[]
 }
 
 model Attributes {
@@ -98,6 +102,21 @@ model AuditLog {
   goldDelta  Int?
   details    String?  // JSON stringified metadata
   createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model BossRaid {
+  id         String   @id @default(uuid())
+  userId     String
+  bossName   String   @default("Chronos, Devourer of Hours")
+  bossTitle  String   @default("The Procrastination Void-Titan")
+  currentHp  Int      @default(1500)
+  maxHp      Int      @default(1500)
+  bossLevel  Int      @default(1)
+  isDefeated Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

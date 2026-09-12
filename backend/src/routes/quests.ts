@@ -257,8 +257,45 @@ router.post('/:id/complete', requireAuth, async (req: AuthenticatedRequest, res)
         ? Math.max(0, user.streakFreezeCount - 1)
         : user.streakFreezeCount;
 
+      // 8.5 Roleplay Combat: Deal damage to active World Boss
+      let bossDamage = 0;
+      let bossDefeated = false;
+      let bossDefeatedBonusGold = 0;
+      let activeBoss = await tx.bossRaid.findFirst({
+        where: { userId, isDefeated: false },
+        orderBy: { createdAt: 'desc' },
+      });
+
+      if (activeBoss) {
+        const attrVal =
+          targetAttr === 'intellect'
+            ? user.attributes.intellect
+            : targetAttr === 'strength'
+            ? user.attributes.strength
+            : targetAttr === 'vitality'
+            ? user.attributes.vitality
+            : user.attributes.charisma;
+
+        bossDamage = Math.floor(finalXp * (1 + attrVal / 25));
+        const remainingHp = Math.max(0, activeBoss.currentHp - bossDamage);
+        bossDefeated = remainingHp === 0;
+
+        if (bossDefeated) {
+          bossDefeatedBonusGold = 250;
+          await tx.bossRaid.update({
+            where: { id: activeBoss.id },
+            data: { currentHp: 0, isDefeated: true },
+          });
+        } else {
+          await tx.bossRaid.update({
+            where: { id: activeBoss.id },
+            data: { currentHp: remainingHp },
+          });
+        }
+      }
+
       // 8. Update User stats
-      const totalBonusGold = progression.bonusGoldAwarded;
+      const totalBonusGold = progression.bonusGoldAwarded + bossDefeatedBonusGold;
       const updatedUser = await tx.user.update({
         where: { id: userId },
         data: {
@@ -325,6 +362,12 @@ router.post('/:id/complete', requireAuth, async (req: AuthenticatedRequest, res)
           newLevel: progression.newLevel,
           statPointsAwarded: progression.statPointsAwarded,
           xpRequiredForNextLevel: progression.xpRequiredForNextLevel,
+          bossCombat: {
+            damageDealt: bossDamage,
+            bossDefeated,
+            bossDefeatedBonusGold,
+            bossName: activeBoss?.bossName || 'World Boss',
+          },
         },
       };
     });
