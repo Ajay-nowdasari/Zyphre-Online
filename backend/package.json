@@ -2,10 +2,11 @@
   "name": "life-rpg-backend",
   "version": "1.0.0",
   "description": "Life RPG Backend API - Strict server-side validated RPG progression engine",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
+    "vercel-build": "prisma generate && tsc",
     "start": "node dist/index.js",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
