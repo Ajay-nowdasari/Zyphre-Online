@@ -190,7 +190,7 @@ router.post('/:id/complete', requireAuth, async (req: AuthenticatedRequest, res)
     const userId = req.userId!;
 
     // 1. Fetch quest and user with current stats in ACID transaction
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const quest = await tx.quest.findFirst({
         where: { id, userId },
       });

@@ -82,7 +82,7 @@ router.post('/custom/:id/claim', requireAuth, async (req: AuthenticatedRequest, 
     const id = req.params.id as string;
     const userId = req.userId!;
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const reward = await tx.customReward.findFirst({
         where: { id, userId },
       });

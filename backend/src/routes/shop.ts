@@ -23,12 +23,12 @@ router.get('/catalog', requireAuth, async (req: AuthenticatedRequest, res): Prom
     }
 
     const discountRate = calculateShopDiscount(user.attributes.charisma);
-    const ownedKeys = new Set(user.inventory.map((i) => i.itemKey));
+    const ownedKeys = new Set(user.inventory.map((i: any) => i.itemKey));
 
     const catalogWithUserContext = SHOP_CATALOG.map((item) => {
       const discountedPrice = Math.max(0, Math.floor(item.price * (1 - discountRate)));
       const isOwned = ownedKeys.has(item.itemKey);
-      const inventoryEntry = user.inventory.find((i) => i.itemKey === item.itemKey);
+      const inventoryEntry = user.inventory.find((i: any) => i.itemKey === item.itemKey);
 
       return {
         ...item,
@@ -63,7 +63,7 @@ router.post('/purchase', requireAuth, async (req: AuthenticatedRequest, res): Pr
       return;
     }
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const user = await tx.user.findUnique({
         where: { id: userId },
         include: {
@@ -77,7 +77,7 @@ router.post('/purchase', requireAuth, async (req: AuthenticatedRequest, res): Pr
       }
 
       // Check if item is already owned (for non-consumables)
-      const alreadyOwned = user.inventory.find((i) => i.itemKey === itemKey);
+      const alreadyOwned = user.inventory.find((i: any) => i.itemKey === itemKey);
       if (alreadyOwned && catalogItem.category !== 'CONSUMABLE') {
         throw new Error('You already own this item');
       }

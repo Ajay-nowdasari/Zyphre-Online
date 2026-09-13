@@ -64,7 +64,7 @@ router.post('/allocate-stats', requireAuth, async (req: AuthenticatedRequest, re
       return;
     }
 
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const user = await tx.user.findUnique({
         where: { id: req.userId },
         include: { attributes: true },
